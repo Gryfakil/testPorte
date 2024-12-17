@@ -1,0 +1,176 @@
+<!DOCTYPE html><html class="{theme || 'dark'} overflow-x-hidden dark"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>PizzaPunk</title><link rel="icon" href="../../www.pizza-punk.com/favicon.svg" type="image/svg+xml"><link rel="sitemap" href="/sitemap-index.xml"><!-- Basic Open Graph Tags --><meta property="og:type" content="website"><meta property="og:url" content="https://www.pizza-punk.com/"><meta property="og:title" content="PizzaPunk"><meta property="og:description" content="Pizza Punk Generative Design by Jerome Mercier"><meta property="og:image" content="../../www.pizza-punk.com/pizza-punk-op.gif"><!-- Additional Open Graph Tags for Enhanced Engagement --><meta property="og:locale" content="fr_FR"><meta property="og:site_name" content="PizzaPunk"><meta property="og:image:alt" content="Pizza Punk Generative Design by Jerome Mercier"><meta property="og:image:type" content="image/jpeg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><!-- Twitter Card Tags --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content="@GenerativePunk"><meta name="twitter:title" content="PizzaPunk"><meta name="twitter:description" content="Pizza Punk Generative Design by Jerome Mercier"><meta name="twitter:image" content="https://www.pizza-punk.com/pizza-punk-op.gif"><!-- Fallback Meta Tags --><meta name="description" content="Pizza Punk Generative Design by Jerome Mercier"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""><link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&amp;display=swap" rel="stylesheet"><link rel="stylesheet" href="../../cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"><link rel="stylesheet" href="../../unpkg.com/lenis%401.1.13/dist/lenis.css"><!-- Gsap --><script async="" src="../../pizza-punk.containers.piwik.pro/33ee81af-b62c-4db6-b9f3-98f029e83aa8.js"></script><script src="../../www.pizza-punk.com/scripts/gsap.min.js"></script><script src="../../www.pizza-punk.com/scripts/Flip.min.js"></script><script src="../../www.pizza-punk.com/scripts/ScrollTrigger.min.js"></script><script src="../../www.pizza-punk.com/scripts/ScrollToPlugin.min.js"></script><script src="../../unpkg.com/lenis%401.1.13/dist/lenis.min.js"></script><link rel="stylesheet" href="../../www.pizza-punk.com/_astro/cgu.DLUL6KVH.css"><script async="" src="https://www.googletagmanager.com/gtag/js?id=G-Q85TKD9BDP"></script><script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-Q85TKD9BDP');
+  </script></head> <!-- Google tag (gtag.js) -->   <body class="top bg-jour dark:bg-nuit text-nuit dark:text-jour w-full font-poppins overflow-y-scroll overflow-x-hidden relative"> <script type="text/javascript">
+    (function(window, document, dataLayerName, id) {
+    window[dataLayerName]=window[dataLayerName]||[],window[dataLayerName].push({start:(new Date).getTime(),event:"stg.start"});var scripts=document.getElementsByTagName('script')[0],tags=document.createElement('script');
+    function stgCreateCookie(a,b,c){var d="";if(c){var e=new Date;e.setTime(e.getTime()+24*c*60*60*1e3),d="; expires="+e.toUTCString();f="; SameSite=Strict"}document.cookie=a+"="+b+d+f+"; path=/"}
+    var isStgDebug=(window.location.href.match("stg_debug")||document.cookie.match("stg_debug"))&&!window.location.href.match("stg_disable_debug");stgCreateCookie("stg_debug",isStgDebug?1:"",isStgDebug?14:-1);
+    var qP=[];dataLayerName!=="dataLayer"&&qP.push("data_layer_name="+dataLayerName),isStgDebug&&qP.push("stg_debug");var qPString=qP.length>0?("?"+qP.join("&")):"";
+    tags.async=!0,tags.src="https://pizza-punk.containers.piwik.pro/"+id+".js"+qPString,scripts.parentNode.insertBefore(tags,scripts);
+    !function(a,n,i){a[n]=a[n]||{};for(var c=0;c<i.length;c++)!function(i){a[n][i]=a[n][i]||{},a[n][i].api=a[n][i].api||function(){var a=[].slice.call(arguments,0);"string"==typeof a[0]&&window[dataLayerName].push({event:n+"."+i+":"+a[0],parameters:[].slice.call(arguments,1)})}}(i[c])}(window,"ppms",["tm","cm"]);
+    })(window, document, 'dataLayer', '33ee81af-b62c-4db6-b9f3-98f029e83aa8');
+    </script> <div class="theme absolute z-10 right-20 lg:right-4 top-9 w-[42px] h-6 p-[3px] bg-white rounded-[14px] border border-black items-center gap-2.5 inline-flex justify-end"> <div class="circle w-[18px] h-[18px] bg-nuit rounded-full shadow"></div> </div> <script>
+    const toggleTheme = document.querySelector('.theme');
+    const targetTheme = document.documentElement;
+    const circle = document.querySelector('.circle');
+    let isTweening = false;
+  
+    function applyTheme(theme) {
+      targetTheme.classList.toggle('dark', theme === 'dark');
+      toggleTheme.classList.toggle('justify-end', theme === 'dark');
+      toggleTheme.classList.toggle('justify-start', theme === 'light');
+      localStorage.setItem('theme', theme);
+  
+      // Appeler la fonction de mise à jour du sketch
+      if (typeof window.updateSketchTheme === 'function') {
+        window.updateSketchTheme(theme);
+      }
+    }
+  
+    function switchTheme() {
+      if (isTweening) return;
+      isTweening = true;
+      const state = Flip.getState(circle);
+      const newTheme = targetTheme.classList.contains('dark') ? 'light' : 'dark';
+      applyTheme(newTheme);
+      Flip.from(state, {
+        duration: 0.5,
+        ease: "bounce.out",
+        onComplete: () => (isTweening = false),
+      });
+    }
+  
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    applyTheme(savedTheme);
+    toggleTheme.addEventListener('click', switchTheme);
+  </script> <nav id="navBarNav" class="nav relative px-4 py-4 flex justify-between items-center "> <a class="text-3xl font-bold leading-none" href="/" title="Back to Home Page"> <div class="w-[63px] h-[61px]"> <img width="63" height="61" src="../../www.pizza-punk.com/images/logo.svg" alt="Logo Pizza Punk Jérôme Mercier" class="bg-jour invert-0 dark:invert p-2 rounded-sm"> </div> </a> <div class="lg:hidden"> <button class="navbar-burger flex items-center text-nuit dark:text-jour p-3"> <svg class="block h-8 w-8 fill-current" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"> <title>Mobile menu</title> <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"></path> </svg> </button> </div> <ul class="hidden absolute top-[64px] left-[100px] transform -translate-y-1/2 lg:flex lg:mx-auto lg:items-center lg:justify-start lg:w-auto lg:space-x-2 font-code"> <li> <a class="navIsActive  hover:text-accent" id="about" href="/">Home</a> </li> <li class="text-gray-300"> <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" class="w-4 h-4 current-fill" viewBox="0 0 24 24"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v0m0 7v0m0 7v0m0-13a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z"></path> </svg> </li> <li> <a class="false  hover:text-accent" href="/events/" id="link-updates">Updates</a> </li> <li class="text-gray-300 "> <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" class="w-4 h-4 current-fill" viewBox="0 0 24 24"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v0m0 7v0m0 7v0m0-13a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z"></path> </svg> </li> <li> <a class="false  hover:text-accent" id="link-projects" href="/projects/">Projects</a> </li> <li class="text-gray-300"> <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" class="w-4 h-4 current-fill" viewBox="0 0 24 24"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v0m0 7v0m0 7v0m0-13a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z"></path> </svg> </li> <li> <a class="false  hover:text-accent" href="/contact/" id="link-contact">About &amp; Contact</a> </li> </ul> </nav> <div id="navBarNavMobile" class="nav navbar-menu relative z-50 hidden"> <div class="navbar-backdrop fixed inset-0 bg-gray-800 opacity-25"></div> <nav id="menu-pop" class="fixed top-0 left-0 bottom-0 flex flex-col w-5/6 max-w-sm py-6 px-6 bg-black overflow-y-auto"> <div class="flex items-center mb-8"> <a class="mr-auto text-3xl font-bold leading-none" href="/"> <div class="w-[63px] h-[61px]"> <img width="63" height="61" src="../../www.pizza-punk.com/images/logo.svg" alt="" class="p-0 rounded-sm invert "> </div> </a> <button class="navbar-close"> <svg class="h-6 w-6 text-gray-400 cursor-pointer hover:text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path> </svg> </button> </div> <div class="font-code text-2xl text-jour"> <ul> <li class="mb-1"> <a class="navIsActiveMobile  block p-4 font-semibold hover:bg-gray-50 hover:text-accent" href="/">Home</a> </li> <li class="mb-1"> <a class="false  block p-4 font-semibold hover:bg-gray-50 hover:text-accent" href="/events/" id="link-sm-updates">Updates</a> </li> <li class="mb-1"> <a class="false  block p-4 font-semibold hover:bg-gray-50 hover:text-accent" href="/projects/" id="link-sm-projects">Projects</a> </li> <li class="mb-1"> <a class="false  block p-4 font-semibold hover:bg-gray-50 hover:text-accent" href="/contact/" id="link-sm-contact">About &amp; Contact</a> </li> </ul> </div> <div class="mt-auto"> <div class="pt-6"></div> <p class="my-4 text-xs text-center text-gray-400"> <span>Made with fucking code...</span> </p> </div> </nav> </div> <script>
+  const burger = document.querySelector(".navbar-burger");
+  const menu = document.querySelector(".navbar-menu");
+
+  // BURGER
+  
+  closeMenu = function () {
+    menu.classList.toggle("hidden");
+    // gsap.from('#menu-pop',{opacity:0,duration:0.5})
+    // gsap.from('.navbar-backdrop',{opacity:0,duration:1})
+  };
+  // open
+  burger.addEventListener("click", function () {
+    closeMenu();
+  });
+
+  // close
+  const close = document.querySelector(".navbar-close");
+  const backdrop = document.querySelector(".navbar-backdrop");
+  close.addEventListener("click", function () {
+    closeMenu();
+  });
+  backdrop.addEventListener("click", function () {
+    closeMenu();
+  });
+</script>  <div id="sketch" class="absolute top-0 h-full w-full -z-10"></div> <div id="intro" class="relative w-full min-h-[70vh] flex flex-col justify-center items-center font-code font-extrabold text-jour text-center m-0 md:mt-8"> <h1 class=" uppercase z-10 text-6xl font-black text-accent dark:text-accent max-w-sm font-poppins"> <span id="text-one">jérôme</span> <span id="text-two">mercier</span> </h1> <div id="btHome" class=" py-4 flex justify-start sm:justify-end gap-4 text-xl font-poppins font-light"> <a href="/events/" id="AllEvents" class=" bg-black dark:bg-jour text-jour dark:text-nuit px-8 py-2 hover:bg-accent hover:text-jour rounded-3xl"> Updates</a> <a href="/projects/" id="AllProjects" class=" px-8 py-2 dark:bg-jour bg-nuit text-accent hover:bg-accent hover:text-jour rounded-3xl font-semibold dark:font-light"> Projects</a> </div> <a href="javascript;" id="reload" class="rounded-xl px-4 py-1 flex gap-3 mt-3"><i class="fa-solid fa-wand-magic-sparkles animate-bounce hover:animate-none text-4xl sm:text-xl"></i> <span class="hidden sm:block text-xl hover:text-nuit dark:hover:text-jour">Spark Magic</span></a> </div>  <div id="backToTop" class="fixed bottom-0 w-full bg-nuit dark:bg-jour flex justify-end"> <div class="text-3xl sm:text-2xl z-50 p-3 sm:py-1 sm:px-3 text-right"> <a href="#top"><i class="fa-solid fa-circle-arrow-up text-jour dark:text-nuit hover:text-accent active:animate-ping"></i></a> </div> </div> <div id="footer" class="bg-jour dark:bg-nuit z-20 mt-28 border-t border-1 border-gray-600 flex justify-between items-center px-5 pb-[100px]"> <div class="flex items-start"> <i class="fa-solid fa-hand-holding-heart pt-4"></i> <p class="m-5 font-code font-extralight text-sm md:text-xs">
+Thank you to my collectors for your support.<br>Explore and collect my
+    NFTs (<a href="https://objkt.com/users/tz1QxDQFtjzn7q851vx1McZ6DnJZtbJ8eaxc">Objkt</a>,
+<a href="https://www.fxhash.xyz/u/Jerome%20(Pizza%20Punk)">Fxhash</a>)
+    to be part of the journey! <a href="/contact/"><i class="fa-solid fa-envelope"></i> Contact</a> </p> </div> <p class="text-xs"><a href="/cgu/"><span class="font-normal">Terms of Use</span></a></p> </div> <div class="lightbox" id="lightbox"> <button class="close hover:animate-ping" id="lightbox-close-btn">×</button> <img id="lightbox-img" src="" alt="" title=""> <p id="lightbox-alt" class="text-xs md:text-sm lg:text-base"></p> </div> <script src="../../www.pizza-punk.com/scripts/lightboxPPunk.js" defer=""></script> <script src="../../www.pizza-punk.com/scripts/lazyLoadImages.js" defer=""></script>   <script>
+  // document.addEventListener("scroll", function () {});
+
+  gsap.registerPlugin(
+    Flip,
+    ScrollTrigger,
+    ScrollToPlugin,
+    // EaselPlugin,
+    // TextPlugin,
+    // CustomEase
+  );
+
+  // Lenis scroll Smooth
+  const lenis = new Lenis();
+
+  // Lenis
+  function raf(time) {
+    lenis.raf(time);
+    requestAnimationFrame(raf);
+  }
+
+  requestAnimationFrame(raf);
+
+  console.log(
+    "%cP I Z Z A P U N K",
+    "background-color: black;color: white; font-size: 16px; font-weight: bold; padding:5px 25px; margin-top:20px"
+  );
+
+  const backToTopButton = document.getElementById("backToTop");
+  const linkTopBt = backToTopButton.querySelector("a");
+  linkTopBt.addEventListener("click", (event) => {
+  event.preventDefault(); // Empêche le comportement par défaut du lien
+
+  gsap.to(window, {
+    duration: 1,
+    scrollTo: { y: 0 }, // Définit la cible du scroll
+    ease: "power2.out" // Ajoute un effet de douceur à l'animation
+  });
+  });
+
+  // Initially hide the button
+  backToTopButton.style.display = "none";
+
+  window.addEventListener("scroll", () => {
+    const scrollThreshold = window.innerHeight*0.5;
+    if (window.scrollY > scrollThreshold) {
+      // Show after scrolling 100px
+      backToTopButton.style.display = "block"; // Make it visible
+      
+    } else {
+      backToTopButton.style.display = "none"; // Hide it
+    }
+  });
+
+  console.log("%c # What is hidden cannot always be seen.", "margin-top:40px");
+</script> <script src="../../www.pizza-punk.com/scripts/p5.min.js"></script> <script src="../../www.pizza-punk.com/scripts/sketch_v%3D1.02.js"></script> <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    // Sélectionnez tous les liens
+
+    document.getElementById("reload").addEventListener("click", (e) => {
+      e.preventDefault();
+      if (typeof MySketch.changeConfig === "function") {
+        MySketch.changeConfig();
+      } else {
+        console.error("changeConfig is not defined.");
+      }
+    });
+  });
+  
+  toggleTheme.addEventListener('click', ()=>{
+    if (typeof MySketch.changeColors === "function") {
+          MySketch.changeColors();
+        } else {
+          console.error("changeColors is not defined.");
+        }
+  });
+</script> <script src="../../www.pizza-punk.com/scripts/TextPlugin.min.js"></script> <script>
+  gsap.registerPlugin(TextPlugin);
+
+  gsap.to("#text-one", {
+    duration: 1,
+    text: "creative",
+    ease: "power2.out",
+    delay: 2,
+    yoyo: true,
+    repeat: -1,
+    repeatDelay: 2,
+  });
+  gsap.to("#text-two", {
+    duration: 1,
+    text: "coding",
+    ease: "power2.out",
+    delay: 2,
+    yoyo: true,
+    repeat: -1,
+    repeatDelay: 2,
+  });
+</script></body></html>
